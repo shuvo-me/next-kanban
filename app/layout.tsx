@@ -24,8 +24,10 @@ export default function RootLayout({
         <Theme appearance="dark">
           <main className=" flex items-start">
             <Sidebar />
-            <Navbar />
-            {children}
+            <div>
+              <Navbar />
+              {children}
+            </div>
           </main>
         </Theme>
       </body>
