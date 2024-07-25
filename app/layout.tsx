@@ -24,9 +24,9 @@ export default function RootLayout({
         <Theme appearance="dark">
           <main className=" flex items-start">
             <Sidebar />
-            <div>
+            <div className="flex flex-col w-full">
               <Navbar />
-              {children}
+              <div className=" overflow-auto">{children}</div>
             </div>
           </main>
         </Theme>

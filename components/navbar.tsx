@@ -1,9 +1,23 @@
-import React from 'react'
+"use client";
+import useStore from "@/store";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import React from "react";
 
 const Navbar = () => {
-  return (
-    <div>Navbar</div>
-  )
-}
+  const store = useStore();
+  console.log({ store });
 
-export default Navbar
+  return (
+    <nav className="p-4 border-b border-b-gray-900 w-full shrink-0">
+      <button
+        type="button"
+        className=" size-8 rounded inline-flex items-center justify-center hover:bg-gray-900"
+        onClick={store.toggleSidebar}
+      >
+        <ArrowLeftIcon />
+      </button>
+    </nav>
+  );
+};
+
+export default Navbar;
