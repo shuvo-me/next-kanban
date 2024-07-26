@@ -22,11 +22,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Theme appearance="dark">
-          <main className=" flex items-start">
+          <main className=" flex flex-row items-start h-screen">
             <Sidebar />
-            <div className="flex flex-col w-full">
+            <div className="size-full">
               <Navbar />
-              <div className=" overflow-auto">{children}</div>
+              <div className="p-4 h-[calc(100vh-10vh)]">{children}</div>
             </div>
           </main>
         </Theme>

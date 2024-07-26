@@ -11,7 +11,7 @@ const Sidebar = () => {
   return (
     <aside
       className={cn(
-        "border-r border-r-gray-900 h-screen transition duration-200 ease-linear",
+        "border-r border-r-gray-900 h-full transition duration-200 ease-linear shrink-0",
         isShowSidebar
           ? "w-64 translate-x-0"
           : "w-0 -translate-x-52 overflow-hidden"
