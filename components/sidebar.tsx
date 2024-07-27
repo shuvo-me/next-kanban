@@ -1,10 +1,10 @@
 "use client";
 import { Heading, Flex } from "@radix-ui/themes";
-import { TokensIcon } from "@radix-ui/react-icons";
 import React from "react";
 import Link from "next/link";
 import cn from "@/lib/cn";
 import useStore from "@/store";
+import Image from "next/image";
 
 const Sidebar = () => {
   const { isShowSidebar } = useStore();
@@ -20,9 +20,11 @@ const Sidebar = () => {
       <div className=" p-5 text-center">
         <Flex gap={"1"} align={"center"} justify={"center"}>
           <Heading size="3" className="flex items-center gap-1">
-            <Link href={"/"}>NextTrello</Link>
+            <Link href={"/"}>NextKanban</Link>
           </Heading>
-          <TokensIcon height={20} width={20} />
+          <div className="relative size-7">
+            <Image src={"/images/logo.png"} alt=" app logo" fill />
+          </div>
         </Flex>
       </div>
       <div className=" mt-10 *:text-left">
