@@ -9,9 +9,13 @@ import {
 } from "@radix-ui/react-icons";
 import { DropdownMenu } from "@radix-ui/themes";
 import AddTaskBtn from "@/components/addtask-btn";
+import { TaskType } from "@/lib/types";
 
 const List = () => {
-  const { lists } = useStore();
+  const { lists, addTask } = useStore();
+  const handleAddTask = (task: TaskType, listId: string) => {
+    addTask(task, listId);
+  };
   return (
     <div className=" flex items-start gap-6 divide-x divide-gray-900 h-full overflow-x-auto">
       {lists?.map((list) => (
@@ -45,7 +49,7 @@ const List = () => {
             {list.tasks.map((task) => (
               <TaskCard task={task} key={task.title} listId={list.id} />
             ))}
-            <AddTaskBtn />
+            <AddTaskBtn onAddTask={handleAddTask} />
           </div>
         </div>
       ))}

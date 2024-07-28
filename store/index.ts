@@ -1,10 +1,11 @@
-import { ListType } from '@/lib/types';
+import { ListType, TaskType } from '@/lib/types';
 import { create } from 'zustand';
 
 interface StoreState{
  isShowSidebar: boolean,
  toggleSidebar: () => void;
- lists?: ListType[]
+ lists?: ListType[],
+ addTask: (task: TaskType, listId: string) => void
 }
 
 const useStore = create<StoreState>()((set) => ({
@@ -23,7 +24,13 @@ const useStore = create<StoreState>()((set) => ({
       ]
     }
   ],
-  toggleSidebar: () => set((state)=>({ isShowSidebar: !state.isShowSidebar}))
+  toggleSidebar: () => set((state)=>({ isShowSidebar: !state.isShowSidebar})),
+  addTask: (task, listId) => set((state)=>({lists: state.lists?.map(list=> {
+       if(list.id === listId){
+         list.tasks = [...list.tasks, task];
+       }
+       return list;
+  })}))
 }))
 
 

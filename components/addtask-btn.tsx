@@ -1,4 +1,5 @@
 "use client";
+import { TaskType } from "@/lib/types";
 import { PlusIcon } from "@radix-ui/react-icons";
 import {
   Box,
@@ -9,9 +10,19 @@ import {
   TextArea,
   TextField,
 } from "@radix-ui/themes";
-import React from "react";
+import React, { FC, useState } from "react";
 
-const AddTaskBtn = () => {
+interface AddTaskBtn {
+  onAddTask: () => void;
+}
+
+const AddTaskBtn: FC<AddTaskBtn> = ({ onAddTask }) => {
+  const [task, setTask] = useState<TaskType>({
+    title: "",
+    description: "",
+    dueDate: "",
+    tags: [],
+  });
   return (
     <Dialog.Root>
       <Dialog.Trigger>
@@ -36,15 +47,33 @@ const AddTaskBtn = () => {
               radius="large"
               placeholder="Task title…"
               id="title"
+              onInput={(e) => {
+                console.log({ e });
+                setTask((tsk) => ({
+                  ...tsk,
+                  title: (e.target as HTMLInputElement).value || "",
+                }));
+              }}
             />
           </Box>
           <Box className="space-y-1">
             <label htmlFor="title" className=" text-sm">
               Description
             </label>
-            <TextArea placeholder=" Task description..." />
+            <TextArea
+              placeholder=" Task description..."
+              onInput={(e) =>
+                setTask((tsk) => ({
+                  ...tsk,
+                  description: (e.target as HTMLTextAreaElement).value,
+                }))
+              }
+            />
           </Box>
-          <Button className="!cursor-pointer">
+          <Button
+            className="!cursor-pointer"
+            onClick={() => console.log({ task })}
+          >
             <Flex align={"center"} gap={"2"}>
               Add
               <PlusIcon />
