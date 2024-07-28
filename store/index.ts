@@ -17,7 +17,7 @@ const useStore = create<StoreState>()((set) => ({
         {
           title: 'Make the work done',
           description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, dolor?',
-          tags: ['web','figma'],
+          tags: ['web','design'],
           dueDate: '12-25-12'
         }
       ]

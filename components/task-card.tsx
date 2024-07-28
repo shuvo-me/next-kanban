@@ -1,10 +1,16 @@
 "use client";
+import { TaskType } from "@/lib/types";
 import { ClockIcon, DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { Avatar, DropdownMenu } from "@radix-ui/themes";
 import Image from "next/image";
-import React from "react";
+import React, { FC } from "react";
 
-const TaskCard = () => {
+interface TaskCardPropType {
+  task: TaskType;
+  listId: string;
+}
+
+const TaskCard: FC<TaskCardPropType> = ({ listId, task }) => {
   return (
     <div
       className=" border border-gray-900 hover:border-gray-800 rounded p-4 text-sm space-y-2"
@@ -13,11 +19,7 @@ const TaskCard = () => {
       {/* card header */}
       <div>
         <h4 className=" flex items-center justify-between gap-2">
-          <strong className=" max-w-full line-clamp-1">
-            {" "}
-            Task title Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Esse, modi!
-          </strong>
+          <strong className=" max-w-full line-clamp-1"> {task.title}</strong>
           <span className="shrink-0">
             <DropdownMenu.Root>
               <DropdownMenu.Trigger>
@@ -43,20 +45,19 @@ const TaskCard = () => {
             className=" w-full rounded"
           />
         </div>
-        <div className=" line-clamp-1">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos,
-          dolor?
-        </div>
+        <div className=" line-clamp-1">{task.description}</div>
       </div>
       {/* card bottom */}
       <div className="space-y-2">
         <div className=" flex flex-wrap gap-1">
-          <small className=" py-1 px-2 lowercase text-xs bg-gray-900 rounded">
-            web
-          </small>
-          <small className=" py-1 px-2 lowercase text-xs bg-gray-900 rounded">
-            figma
-          </small>
+          {task.tags.map((tag) => (
+            <small
+              className=" py-1 px-2 lowercase text-xs bg-gray-900 rounded"
+              key={tag}
+            >
+              {tag}
+            </small>
+          ))}
         </div>
         <div className=" flex items-center justify-between">
           <div>
