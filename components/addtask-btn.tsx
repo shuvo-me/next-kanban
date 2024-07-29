@@ -13,7 +13,7 @@ import {
 import React, { FC, useState } from "react";
 
 interface AddTaskBtn {
-  onAddTask: () => void;
+  onAddTask: (task: TaskType) => void;
 }
 
 const AddTaskBtn: FC<AddTaskBtn> = ({ onAddTask }) => {
@@ -23,8 +23,11 @@ const AddTaskBtn: FC<AddTaskBtn> = ({ onAddTask }) => {
     dueDate: "",
     tags: [],
   });
+
+  const [open, setOpen] = useState<boolean>(false);
+
   return (
-    <Dialog.Root>
+    <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger>
         <button className=" flex items-center justify-center gap-2 border border-gray-900 text-sm py-2 px-1 rounded hover:text-white/80">
           Add Task
@@ -72,7 +75,10 @@ const AddTaskBtn: FC<AddTaskBtn> = ({ onAddTask }) => {
           </Box>
           <Button
             className="!cursor-pointer"
-            onClick={() => console.log({ task })}
+            onClick={() => {
+              setOpen(false);
+              onAddTask(task);
+            }}
           >
             <Flex align={"center"} gap={"2"}>
               Add

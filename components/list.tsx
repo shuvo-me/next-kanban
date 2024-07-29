@@ -15,6 +15,7 @@ const List = () => {
   const { lists, addTask } = useStore();
   const handleAddTask = (task: TaskType, listId: string) => {
     addTask(task, listId);
+    console.log({ lists });
   };
   return (
     <div className=" flex items-start gap-6 divide-x divide-gray-900 h-full overflow-x-auto">
@@ -49,7 +50,9 @@ const List = () => {
             {list.tasks.map((task) => (
               <TaskCard task={task} key={task.title} listId={list.id} />
             ))}
-            <AddTaskBtn onAddTask={handleAddTask} />
+            <AddTaskBtn
+              onAddTask={(task: TaskType) => handleAddTask(task, list.id)}
+            />
           </div>
         </div>
       ))}
