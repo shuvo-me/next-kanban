@@ -5,7 +5,6 @@ import React from "react";
 
 const Navbar = () => {
   const store = useStore();
-  console.log({ store });
 
   return (
     <nav className="p-4 border-b border-b-gray-900 w-full shrink-0">

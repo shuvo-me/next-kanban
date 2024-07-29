@@ -5,7 +5,8 @@ interface StoreState{
  isShowSidebar: boolean,
  toggleSidebar: () => void;
  lists?: ListType[],
- addTask: (task: TaskType, listId: string) => void
+ addTask: (task: TaskType, listId: string) => void,
+ addNewList: (listName: string, listId: string) => void
 }
 
 const useStore = create<StoreState>()((set) => ({
@@ -30,7 +31,11 @@ const useStore = create<StoreState>()((set) => ({
          list.tasks = [...list.tasks, task];
        }
        return list;
-  })}))
+  })})),
+  addNewList: (listName, listId) => set((state)=>{
+    console.log({state, listName, listId});
+    return state
+  })
 }))
 
 

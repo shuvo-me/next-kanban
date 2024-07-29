@@ -51,7 +51,6 @@ const AddTaskBtn: FC<AddTaskBtn> = ({ onAddTask }) => {
               placeholder="Task title…"
               id="title"
               onInput={(e) => {
-                console.log({ e });
                 setTask((tsk) => ({
                   ...tsk,
                   title: (e.target as HTMLInputElement).value || "",

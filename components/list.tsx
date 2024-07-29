@@ -15,10 +15,9 @@ const List = () => {
   const { lists, addTask } = useStore();
   const handleAddTask = (task: TaskType, listId: string) => {
     addTask(task, listId);
-    console.log({ lists });
   };
   return lists?.map((list) => (
-    <div className=" w-72 max-w-72 h-full bg-gray-900/20rounded" key={list.id}>
+    <div className=" w-72 max-w-72 h-full bg-gray-900/20 rounded" key={list.id}>
       <ScrollArea type="auto" scrollbars="vertical">
         <div className="flex items-center justify-between  p-4 ">
           <h4>Todo</h4>
